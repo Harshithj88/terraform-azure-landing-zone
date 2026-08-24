@@ -1,0 +1,20 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-tf-docs
+    rev: v0.3.0
+    hooks:
+      - id: pre-commit-tf-docs
+
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.23
+    hooks:
+      - id: tflint
+      - id: terraform-validate
+      - id: terraform-fmt
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: detect-private-key
