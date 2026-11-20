@@ -57,6 +57,8 @@ chmod +x scripts/init-backend.sh
 | `AZURE_SUBSCRIPTION_ID` | Target subscription ID |
 | `AZURE_TENANT_ID` | Azure AD tenant ID |
 
+Then create the repository **variable** `AZURE_DEPLOY_ENABLED` = `true` (Settings > Secrets and variables > Actions > Variables). Until it is set, the plan and apply workflows are skipped so PRs are not blocked by missing Azure credentials.
+
 ## 4. Deploy
 
 ### Via CI/CD (recommended)

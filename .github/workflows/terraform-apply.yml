@@ -34,7 +34,7 @@ jobs:
   apply-dev:
     name: Apply (dev)
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event.inputs.environment == 'dev'
+    if: vars.AZURE_DEPLOY_ENABLED == 'true' && (github.event_name == 'push' || github.event.inputs.environment == 'dev')
     environment: dev
     defaults:
       run:
@@ -65,7 +65,7 @@ jobs:
   apply-prod:
     name: Apply (prod)
     runs-on: ubuntu-latest
-    if: github.event.inputs.environment == 'prod'
+    if: vars.AZURE_DEPLOY_ENABLED == 'true' && github.event.inputs.environment == 'prod'
     environment: production
     defaults:
       run:

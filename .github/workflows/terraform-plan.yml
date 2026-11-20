@@ -21,6 +21,7 @@ env:
 jobs:
   plan:
     name: Plan (${{ matrix.environment }})
+    if: vars.AZURE_DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     strategy:
       matrix:
