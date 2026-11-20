@@ -50,16 +50,16 @@ module "log_analytics" {
 }
 
 module "hub_vnet" {
-  source              = "../../modules/hub-vnet"
-  vnet_name           = "vnet-hub-${var.environment}-${var.location_short}"
-  location            = var.location
-  resource_group_name = azurerm_resource_group.hub.name
-  address_space       = [var.hub_address_space]
+  source                 = "../../modules/hub-vnet"
+  vnet_name              = "vnet-hub-${var.environment}-${var.location_short}"
+  location               = var.location
+  resource_group_name    = azurerm_resource_group.hub.name
+  address_space          = [var.hub_address_space]
   gateway_subnet_prefix  = var.hub_gateway_subnet_prefix
   firewall_subnet_prefix = var.hub_firewall_subnet_prefix
   bastion_subnet_prefix  = var.hub_bastion_subnet_prefix
-  enable_bastion      = var.enable_bastion
-  tags                = local.tags
+  enable_bastion         = var.enable_bastion
+  tags                   = local.tags
 }
 
 module "spoke_vnet" {
@@ -109,10 +109,10 @@ module "azure_policy" {
 }
 
 module "budget" {
-  source         = "../../modules/budget"
-  budget_name    = "budget-${var.environment}"
+  source          = "../../modules/budget"
+  budget_name     = "budget-${var.environment}"
   subscription_id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}"
-  monthly_amount = var.monthly_budget
-  start_date     = var.budget_start_date
-  alert_emails   = var.budget_alert_emails
+  monthly_amount  = var.monthly_budget
+  start_date      = var.budget_start_date
+  alert_emails    = var.budget_alert_emails
 }

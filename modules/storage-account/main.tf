@@ -10,7 +10,7 @@ resource "azurerm_storage_account" "this" {
   shared_access_key_enabled       = var.shared_access_key_enabled
 
   blob_properties {
-    versioning_enabled       = var.versioning_enabled
+    versioning_enabled = var.versioning_enabled
     delete_retention_policy {
       days = var.soft_delete_retention_days
     }
