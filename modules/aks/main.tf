@@ -15,7 +15,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     os_disk_size_gb     = 128
     vnet_subnet_id      = var.subnet_id
     zones               = var.availability_zones
-    auto_scaling_enabled = true
+    enable_auto_scaling = true
 
     node_labels = {
       "nodepool" = "system"
@@ -39,12 +39,13 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   azure_active_directory_role_based_access_control {
+    managed            = true
     azure_rbac_enabled = true
     tenant_id          = var.tenant_id
   }
 
   auto_scaler_profile {
-    balance_similar_node_groups = true
+    balance_similar_node_groups  = true
     max_graceful_termination_sec = 600
     scale_down_delay_after_add   = "10m"
     scale_down_unneeded          = "10m"
@@ -52,8 +53,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   maintenance_window_auto_upgrade {
-    frequency = "Weekly"
-    interval  = 1
+    frequency   = "Weekly"
+    interval    = 1
     day_of_week = "Sunday"
     start_time  = "02:00"
     utc_offset  = "-06:00"
@@ -77,7 +78,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "user" {
   os_disk_size_gb       = 128
   vnet_subnet_id        = var.subnet_id
   zones                 = var.availability_zones
-  auto_scaling_enabled  = true
+  enable_auto_scaling   = true
   tags                  = var.tags
 
   node_labels = {

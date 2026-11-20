@@ -21,6 +21,7 @@ env:
 jobs:
   plan:
     name: Plan (${{ matrix.environment }})
+    if: vars.AZURE_DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -52,7 +53,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Format Check
-        run: terraform fmt -check -recursive ../../modules
+        run: terraform fmt -check -recursive ../..
 
       - name: Terraform Plan
         id: plan

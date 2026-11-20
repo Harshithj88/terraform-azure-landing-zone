@@ -1,8 +1,8 @@
-environment          = "dev"
-location             = "westus2"
-location_short       = "wus2"
-owner                = "platform-engineering"
-unique_suffix        = "x1d"
+environment    = "dev"
+location       = "westus2"
+location_short = "wus2"
+owner          = "platform-engineering"
+unique_suffix  = "x1d"
 
 # Networking
 hub_address_space                    = "10.0.0.0/16"
@@ -15,7 +15,7 @@ spoke_workload_subnet_prefix         = "10.1.1.0/24"
 spoke_private_endpoint_subnet_prefix = "10.1.2.0/24"
 
 # AKS
-kubernetes_version        = "1.29"
+kubernetes_version        = "1.35"
 aks_sku_tier              = "Free"
 aks_system_node_vm_size   = "Standard_D2s_v5"
 aks_system_node_min_count = 1

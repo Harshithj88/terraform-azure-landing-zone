@@ -26,3 +26,9 @@ variable "allowed_vm_skus" {
   type        = list(string)
   default     = []
 }
+
+variable "deny_public_ip_excluded_scopes" {
+  description = "Scopes (e.g. the hub resource group holding Bastion) excluded from the deny public IP policy"
+  type        = list(string)
+  default     = []
+}

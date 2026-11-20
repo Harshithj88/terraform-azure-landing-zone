@@ -48,6 +48,13 @@ resource "azurerm_subscription_policy_assignment" "deny_public_ip" {
   description          = "Prevent creation of Public IP resources"
   subscription_id      = var.subscription_id
   policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/6c112d4e-5bc7-47ae-a041-ea2d9dccd749"
+  not_scopes           = var.deny_public_ip_excluded_scopes
+
+  parameters = jsonencode({
+    listOfResourceTypesNotAllowed = {
+      value = ["Microsoft.Network/publicIPAddresses"]
+    }
+  })
 }
 
 resource "azurerm_subscription_policy_assignment" "allowed_vm_skus" {
